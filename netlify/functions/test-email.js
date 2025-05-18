@@ -1,11 +1,17 @@
 import FormData from 'form-data';
 import Mailgun from 'mailgun.js';
+import { createClient } from '@supabase/supabase-js';
+
+const supabase = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_ANON_KEY
+);
 
 export const handler = async (event) => {
   const headers = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Headers': 'Content-Type',
-    'Access-Control-Allow-Methods': 'POST, OPTIONS'
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
   };
 
   if (event.httpMethod === 'OPTIONS') {
@@ -13,29 +19,41 @@ export const handler = async (event) => {
   }
 
   try {
-    if (!process.env.MAILGUN_API_KEY || !process.env.MAILGUN_DOMAIN || !process.env.TO_EMAIL || !process.env.FROM_EMAIL) {
-      return {
-        statusCode: 500,
-        headers,
-        body: JSON.stringify({ error: 'Missing Mailgun configuration' })
-      };
-    }
-
+    console.log("📥 Function invoked");
     const formData = JSON.parse(event.body || '{}');
     const { name, email, company, phone, interest, message } = formData;
+    console.log("🧾 Form Data:", formData);
 
     if (!name || !email || !message) {
+      console.warn("⚠️ Missing required fields");
       return {
         statusCode: 400,
         headers,
-        body: JSON.stringify({ error: 'Missing required fields' })
+        body: JSON.stringify({ error: 'Missing required fields' }),
       };
     }
 
+    // ✅ SUPABASE
+    const { error: supabaseError, data: supabaseData } = await supabase
+      .from('contact_submissions')
+      .insert([{ name, email, company, phone, interest, message }]);
+
+    if (supabaseError) {
+      console.error("❌ Supabase insert failed:", supabaseError);
+      throw new Error("Supabase insert error: " + supabaseError.message);
+    } else {
+      console.log("✅ Supabase insert succeeded:", supabaseData);
+    }
+
+    // ✅ MAILGUN
     const mailgun = new Mailgun(FormData);
     const mg = mailgun.client({ username: 'api', key: process.env.MAILGUN_API_KEY });
 
-    const emailContent = `
+    const mailResponse = await mg.messages.create(process.env.MAILGUN_DOMAIN, {
+      from: process.env.FROM_EMAIL,
+      to: process.env.TO_EMAIL,
+      subject: 'New Contact Form Submission',
+      text: `
 New Contact Form Submission:
 
 Name: ${name}
@@ -46,27 +64,26 @@ Interest: ${interest || 'N/A'}
 
 Message:
 ${message}
-    `;
-
-    const response = await mg.messages.create(process.env.MAILGUN_DOMAIN, {
-      from: process.env.FROM_EMAIL,
-      to: process.env.TO_EMAIL,
-      subject: 'New Contact Form Submission',
-      text: emailContent,
+      `,
     });
+
+    console.log("📧 Mailgun response:", mailResponse);
 
     return {
       statusCode: 200,
       headers,
-      body: JSON.stringify({ message: 'Contact form submitted successfully', id: response.id })
+      body: JSON.stringify({
+        message: 'Contact form submitted successfully',
+        id: mailResponse.id || 'no-mailgun-id',
+      }),
     };
 
-  } catch (error) {
-    console.error('Error sending dynamic email:', error);
+  } catch (err) {
+    console.error("🔥 Function error:", err.message);
     return {
       statusCode: 500,
       headers,
-      body: JSON.stringify({ error: 'Failed to send email', details: error.message })
+      body: JSON.stringify({ error: err.message }),
     };
   }
 };

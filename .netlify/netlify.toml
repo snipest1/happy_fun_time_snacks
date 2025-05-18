@@ -1,0 +1,48 @@
+functionsDirectory = "C:\\Users\\snipe\\OneDrive\\Documents\\business_docs\\hfts\\hfts_website\\hfts_repo\\project-bolt-sb1-z4q8pfh7\\project\\happy_fun_time_snacks\\netlify\\functions"
+functionsDirectoryOrigin = "config"
+redirectsOrigin = "config"
+plugins = []
+headers = []
+
+[build]
+publish = "C:\\Users\\snipe\\OneDrive\\Documents\\business_docs\\hfts\\hfts_website\\hfts_repo\\project-bolt-sb1-z4q8pfh7\\project\\happy_fun_time_snacks\\dist"
+publishOrigin = "config"
+commandOrigin = "config"
+command = "npm run build"
+functions = "C:\\Users\\snipe\\OneDrive\\Documents\\business_docs\\hfts\\hfts_website\\hfts_repo\\project-bolt-sb1-z4q8pfh7\\project\\happy_fun_time_snacks\\netlify\\functions"
+
+[build.environment]
+
+[build.processing]
+
+[build.processing.css]
+
+[build.processing.html]
+
+[build.processing.images]
+
+[build.processing.js]
+
+[build.services]
+
+[dev]
+framework = "vite"
+targetPort = 5173.0
+port = 8888.0
+
+[functions]
+
+[functions."*"]
+node_bundler = "esbuild"
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
