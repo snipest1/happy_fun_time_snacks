@@ -36,24 +36,40 @@ const ContactSection: React.FC = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      setFormData({
-        name: '',
-        company: '',
-        email: '',
-        phone: '',
-        interest: '',
-        message: ''
-      });
-    }, 1500);
-  };
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+
+        try {
+            const response = await fetch('/.netlify/functions/test-email', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            if (response.ok) {
+                setIsSubmitted(true);
+                setFormData({
+                    name: '',
+                    company: '',
+                    email: '',
+                    phone: '',
+                    interest: '',
+                    message: '',
+                });
+            } else {
+                console.error('Submission failed:', await response.text());
+                alert('There was a problem sending your message.');
+            }
+        } catch (err) {
+            console.error('Error submitting form:', err);
+            alert('An unexpected error occurred.');
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
 
   return (
     <section id="contact" className="py-20 bg-white">
