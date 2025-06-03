@@ -2,6 +2,14 @@ import FormData from 'form-data';
 import Mailgun from 'mailgun.js';
 import { createClient } from '@supabase/supabase-js';
 
+console.log("🚀 Function hit: test-email");
+console.log("🔒 ENV CHECK", {
+  SUPABASE_URL: process.env.SUPABASE_URL,
+  SUPABASE_KEY: !!process.env.SUPABASE_ANON_KEY,
+  MAILGUN: !!process.env.MAILGUN_API_KEY,
+});
+
+
 const supabase = createClient(
   process.env.SUPABASE_URL,
   process.env.SUPABASE_ANON_KEY
