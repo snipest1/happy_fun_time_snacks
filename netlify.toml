@@ -15,6 +15,13 @@
   targetPort = 5173
   port = 8888
 
+# 🔁 Canonical domain redirect
+[[redirects]]
+  from = "https://happyfuntimesnacks.netlify.app/*"
+  to = "https://www.happyfuntimesnacks.com/:splat"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
