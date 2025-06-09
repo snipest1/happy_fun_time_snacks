@@ -1,15 +1,15 @@
-functionsDirectory = "C:\\Users\\snipe\\OneDrive\\Documents\\business_docs\\hfts\\hfts_website\\hfts_repo\\project-bolt-sb1-z4q8pfh7\\project\\happy_fun_time_snacks\\netlify\\functions"
+functionsDirectory = "C:\\Users\\snipe\\OneDrive\\Documents\\business_docs\\hfts\\hfts_website\\hfts_repo\\project-bolt-sb1-z4q8pfh7\\happy_fun_time_snacks\\frontend\\netlify\\functions"
 functionsDirectoryOrigin = "config"
 redirectsOrigin = "config"
-plugins = []
 headers = []
 
 [build]
-publish = "C:\\Users\\snipe\\OneDrive\\Documents\\business_docs\\hfts\\hfts_website\\hfts_repo\\project-bolt-sb1-z4q8pfh7\\project\\happy_fun_time_snacks\\dist"
+publish = "C:\\Users\\snipe\\OneDrive\\Documents\\business_docs\\hfts\\hfts_website\\hfts_repo\\project-bolt-sb1-z4q8pfh7\\happy_fun_time_snacks\\frontend\\dist"
 publishOrigin = "config"
 commandOrigin = "config"
 command = "npm run build"
-functions = "C:\\Users\\snipe\\OneDrive\\Documents\\business_docs\\hfts\\hfts_website\\hfts_repo\\project-bolt-sb1-z4q8pfh7\\project\\happy_fun_time_snacks\\netlify\\functions"
+base = "C:\\Users\\snipe\\OneDrive\\Documents\\business_docs\\hfts\\hfts_website\\hfts_repo\\project-bolt-sb1-z4q8pfh7\\happy_fun_time_snacks\\frontend"
+functions = "C:\\Users\\snipe\\OneDrive\\Documents\\business_docs\\hfts\\hfts_website\\hfts_repo\\project-bolt-sb1-z4q8pfh7\\happy_fun_time_snacks\\frontend\\netlify\\functions"
 
 [build.environment]
 
@@ -34,6 +34,36 @@ port = 8888.0
 
 [functions."*"]
 node_bundler = "esbuild"
+
+[[plugins]]
+origin = "config"
+package = "@netlify/plugin-functions-install-core"
+
+[plugins.inputs]
+
+[[redirects]]
+from = "https://profound-figolla-72e059.netlify.app/*"
+to = "https://www.happyfuntimesnacks.com/:splat"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "https://happyfuntimesnacks.netlify.app/*"
+to = "https://www.happyfuntimesnacks.com/:splat"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
 
 [[redirects]]
 from = "/*"
