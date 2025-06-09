@@ -1,3 +1,9 @@
+[[redirects]]
+  from = "https://profound-figolla-72e059.netlify.app/*"
+  to = "https://www.happyfuntimesnacks.com/:splat"
+  status = 301
+  force = true
+
 [build]
   base = "frontend"
   command = "npm run build"
