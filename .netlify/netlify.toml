@@ -1,29 +1,7 @@
-functionsDirectory = "C:\\Users\\snipe\\OneDrive\\Documents\\business_docs\\hfts\\hfts_website\\hfts_repo\\project-bolt-sb1-z4q8pfh7\\happy_fun_time_snacks\\frontend\\netlify\\functions"
+functionsDirectory = "C:\\Users\\snipe\\OneDrive\\Documents\\business_docs\\hfts\\hfts_website\\hfts_repo\\project-bolt-sb1-z4q8pfh7\\happy_fun_time_snacks\\netlify\\functions"
 functionsDirectoryOrigin = "config"
 redirectsOrigin = "config"
 headers = []
-
-[build]
-publish = "C:\\Users\\snipe\\OneDrive\\Documents\\business_docs\\hfts\\hfts_website\\hfts_repo\\project-bolt-sb1-z4q8pfh7\\happy_fun_time_snacks\\frontend\\dist"
-publishOrigin = "config"
-commandOrigin = "config"
-command = "npm run build"
-base = "C:\\Users\\snipe\\OneDrive\\Documents\\business_docs\\hfts\\hfts_website\\hfts_repo\\project-bolt-sb1-z4q8pfh7\\happy_fun_time_snacks\\frontend"
-functions = "C:\\Users\\snipe\\OneDrive\\Documents\\business_docs\\hfts\\hfts_website\\hfts_repo\\project-bolt-sb1-z4q8pfh7\\happy_fun_time_snacks\\frontend\\netlify\\functions"
-
-[build.environment]
-
-[build.processing]
-
-[build.processing.css]
-
-[build.processing.html]
-
-[build.processing.images]
-
-[build.processing.js]
-
-[build.services]
 
 [dev]
 framework = "vite"
@@ -40,6 +18,27 @@ origin = "config"
 package = "@netlify/plugin-functions-install-core"
 
 [plugins.inputs]
+
+[build]
+publish = "C:\\Users\\snipe\\OneDrive\\Documents\\business_docs\\hfts\\hfts_website\\hfts_repo\\project-bolt-sb1-z4q8pfh7\\happy_fun_time_snacks\\frontend\\dist"
+publishOrigin = "config"
+commandOrigin = "config"
+command = "npm --prefix frontend run build"
+functions = "C:\\Users\\snipe\\OneDrive\\Documents\\business_docs\\hfts\\hfts_website\\hfts_repo\\project-bolt-sb1-z4q8pfh7\\happy_fun_time_snacks\\netlify\\functions"
+
+[build.environment]
+
+[build.processing]
+
+[build.processing.css]
+
+[build.processing.html]
+
+[build.processing.images]
+
+[build.processing.js]
+
+[build.services]
 
 [[redirects]]
 from = "https://profound-figolla-72e059.netlify.app/*"
