@@ -54,10 +54,10 @@ force = true
 [redirects.headers]
 
 [[redirects]]
-from = "https://happyfuntimesnacks.netlify.app/*"
-to = "https://www.happyfuntimesnacks.com/:splat"
-status = 301.0
-force = true
+from = "/sitemap.xml"
+to = "/sitemap.xml"
+status = 200.0
+force = false
 
 [redirects.query]
 

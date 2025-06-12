@@ -95,8 +95,10 @@ const ContactSection: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="font-medium text-lg">Our Location</h4>
-                  <p className="text-blue-100">123 Vending Way, Suite 456</p>
-                  <p className="text-blue-100">Business District, NY 10001</p>
+                  <p className="text-blue-100">125 Commons Way, Ste 202-203, Unit #164</p>
+                  <p className="text-blue-100">Villa Rica, GA 30180
+
+</p>
                 </div>
               </div>
               
