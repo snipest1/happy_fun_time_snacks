@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
           <div>
             <div className="flex items-center space-x-2 mb-4">
               <Coffee className="h-8 w-8 text-amber-500" />
-              <span className="text-xl font-bold">VendTech</span>
+              <span className="text-xl font-bold">Happy Fun Time Snacks</span>
             </div>
             <p className="text-gray-300 mb-4">
               Revolutionizing the vending experience with smart, modern machines that provide quality products 24/7.
@@ -74,15 +74,15 @@ const Footer: React.FC = () => {
             <ul className="space-y-3">
               <li className="flex items-center space-x-3">
                 <MapPin className="h-5 w-5 text-amber-500" />
-                <span className="text-gray-300">123 Vending Way, Business District</span>
+                <span className="text-gray-300">125 Commons Way, Ste 202-203, Unit #164, Villa Rica, GA 30180</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-amber-500" />
-                <span className="text-gray-300">+1 (555) 123-4567</span>
+                <span className="text-gray-300">+1 (470) 206-5950</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-amber-500" />
-                <span className="text-gray-300">info@vendtech.com</span>
+                <span className="text-gray-300">info@happyfuntimesnacks.com</span>
               </li>
             </ul>
           </div>
@@ -110,7 +110,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="border-t border-gray-700 mt-12 pt-6 text-center text-gray-300">
-          <p>&copy; {new Date().getFullYear()} VendTech. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Happy Fun Time Snacks, LLC. All rights reserved.</p>
         </div>
       </div>
     </footer>
