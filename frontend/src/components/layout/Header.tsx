@@ -12,7 +12,7 @@ const Header: React.FC = () => {
           <div className="flex items-center space-x-2">
             <Coffee className="h-8 w-8 text-blue-800" />
             <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-800 to-blue-600">
-              VendTech
+              Happy Fun Time Snacks
             </span>
           </div>
 
