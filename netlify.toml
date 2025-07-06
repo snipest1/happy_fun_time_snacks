@@ -39,3 +39,8 @@
   status = 200
   conditions = { Host = ["www.happyfuntimesnacks.com"] }
 
+# 🔁 SPA fallback for any unmatched route (regardless of domain)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
