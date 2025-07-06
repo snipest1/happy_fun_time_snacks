@@ -1,3 +1,44 @@
+[build]
+  base = "frontend"
+  command = "npm run build"
+  publish = "dist"
+
+# 🔌 Core plugin
+[plugins]
+  package = "@netlify/plugin-functions-install-core"
+
+[dev]
+  framework = "vite"
+  targetPort = 5173
+  port = 8888
+
+# 🔁 Redirect Netlify subdomain to custom domain
+[[redirects]]
+  from = "https://profound-figolla-72e059.netlify.app/*"
+  to = "https://www.happyfuntimesnacks.com/:splat"
+  status = 301
+  force = true
+
+# 🔁 Redirect root domain to www
+[[redirects]]
+  from = "/*"
+  to = "https://www.happyfuntimesnacks.com/:splat"
+  status = 301
+  force = true
+  conditions = { Host = ["happyfuntimesnacks.com"] }
+
+# ✅ Serve sitemap as static file
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/sitemap.xml"
+  status = 200
+
+# 🔁 SPA fallback for frontend routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  conditions = { Host = ["www.happyfuntimesnacks.com"] }
 # ✅ Redirect from Netlify subdomain
 [[redirects]]
   from = "https://profound-figolla-72e059.netlify.app/*"
@@ -25,4 +66,6 @@
   to = "/index.html"
   status = 200
   conditions = { Host = ["www.happyfuntimesnacks.com"] }
+
+
 
