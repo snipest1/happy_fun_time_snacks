@@ -17,7 +17,7 @@ export default function RepairRequestSection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Repair request submitted:', formData);
+   // console.log('Repair request submitted:', formData);
     // TODO: Replace with actual API call to Supabase, Mailgun, etc.
   };
 

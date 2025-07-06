@@ -1,4 +1,7 @@
-import { Link } from 'react-router-dom';
+import SmoothScrollLink from '../shared/SmoothScrollLink';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+//import { Link } from 'react-router-dom';
 import React from 'react';
 import { Menu, X, Coffee, ShoppingCart } from 'lucide-react';
 
@@ -19,26 +22,21 @@ const Header: React.FC = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <Link to="#machines" className="text-gray-600 hover:text-blue-700 transition-colors">
+            <SmoothScrollLink to="/#machines" className="text-gray-600 hover:text-blue-700 transition-colors">
               Machines
-	      </Link>
-            </a>
-            <Link to="#products" className="text-gray-600 hover:text-blue-700 transition-colors">
+	      </SmoothScrollLink>
+            <SmoothScrollLink to="/#products" className="text-gray-600 hover:text-blue-700 transition-colors">
               Products
-	      </Link>
-            </a>
-            <Link to="#features" className="text-gray-600 hover:text-blue-700 transition-colors">
+	      </SmoothScrollLink>
+            <SmoothScrollLink to="#/features" className="text-gray-600 hover:text-blue-700 transition-colors">
               Features
-	      </Link>
-            </a>
-            <Link to="#locations" className="text-gray-600 hover:text-blue-700 transition-colors">
+	      </SmoothScrollLink>
+            <SmoothScrollLink to="#/locations" className="text-gray-600 hover:text-blue-700 transition-colors">
               Locations
-	      </Link>
-            </a>
-            <Link to="#contact" className="text-gray-600 hover:text-blue-700 transition-colors">
+	      </SmoothScrollLink>
+            <SmoothScroolLink to="#/contact" className="text-gray-600 hover:text-blue-700 transition-colors">
               Contact
-	      </Link>
-            </a>
+	      </SmoothScrollLink>
           </nav>
 
           {/* CTA Button */}
@@ -63,41 +61,36 @@ const Header: React.FC = () => {
       {isMenuOpen && (
         <div className="md:hidden bg-white shadow-lg">
           <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
-            <a 
-              href="#machines" 
+            <SmoothScrollLink to="/#machines" 
               className="text-gray-600 hover:text-blue-700 transition-colors py-2 border-b border-gray-100"
               onClick={() => setIsMenuOpen(false)}
             >
               Machines
-            </a>
-            <a 
-              href="#products" 
+	      </SmoothScrollLink>
+            <Link to="/#products" 
               className="text-gray-600 hover:text-blue-700 transition-colors py-2 border-b border-gray-100"
               onClick={() => setIsMenuOpen(false)}
             >
               Products
-            </a>
-            <a 
-              href="#features" 
+            </SmoothScroolLink>
+            <SmoothScrollLink to="/#features" 
               className="text-gray-600 hover:text-blue-700 transition-colors py-2 border-b border-gray-100"
               onClick={() => setIsMenuOpen(false)}
             >
               Features
-            </a>
-            <a 
-              href="#locations" 
+            </SmoothScrollLink>
+            <SmoothScrollLink to="/#locations" 
               className="text-gray-600 hover:text-blue-700 transition-colors py-2 border-b border-gray-100"
               onClick={() => setIsMenuOpen(false)}
             >
               Locations
-            </a>
-            <a 
-              href="#contact" 
+            </SmoothScrollLink>
+            <SmoothScrollLink to="/#contact" 
               className="text-gray-600 hover:text-blue-700 transition-colors py-2 border-b border-gray-100"
               onClick={() => setIsMenuOpen(false)}
             >
               Contact
-            </a>
+            </SmoothScrollLink>
             <button className="bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-full flex items-center justify-center space-x-2 transition-all">
               <ShoppingCart className="h-5 w-5" />
               <span>Get a Quote</span>
@@ -110,3 +103,4 @@ const Header: React.FC = () => {
 };
 
 export default Header;
+
