@@ -4,7 +4,7 @@
   publish = "dist"
 
 # 🔌 Core plugin
-[plugins]
+[[plugins]]
   package = "@netlify/plugin-functions-install-core"
 
 [dev]
