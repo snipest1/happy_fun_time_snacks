@@ -3,7 +3,6 @@
   command = "npm run build"
   publish = "dist"
 
-# 🔌 Core plugin
 [[plugins]]
   package = "@netlify/plugin-functions-install-core"
 
@@ -19,7 +18,7 @@
   status = 301
   force = true
 
-# 🔁 Redirect root domain to www
+# 🔁 Redirect root domain (non-www) to www
 [[redirects]]
   from = "/*"
   to = "https://www.happyfuntimesnacks.com/:splat"
@@ -27,45 +26,16 @@
   force = true
   conditions = { Host = ["happyfuntimesnacks.com"] }
 
-# ✅ Serve sitemap as static file
+# ✅ Serve sitemap.xml directly
 [[redirects]]
   from = "/sitemap.xml"
   to = "/sitemap.xml"
   status = 200
 
-# 🔁 SPA fallback for frontend routing
+# 🔁 SPA fallback for frontend routing (only on www)
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
   conditions = { Host = ["www.happyfuntimesnacks.com"] }
-# ✅ Redirect from Netlify subdomain
-[[redirects]]
-  from = "https://profound-figolla-72e059.netlify.app/*"
-  to = "https://www.happyfuntimesnacks.com/:splat"
-  status = 301
-  force = true
-
-# ✅ Redirect root domain (non-www) to www
-[[redirects]]
-  from = "/*"
-  to = "https://www.happyfuntimesnacks.com/:splat"
-  status = 301
-  force = true
-  conditions = { Host = ["happyfuntimesnacks.com"] }
-
-# ✅ Serve sitemap as static file
-[[redirects]]
-  from = "/sitemap.xml"
-  to = "/sitemap.xml"
-  status = 200
-
-# ✅ SPA fallback — only for requests to www domain
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  conditions = { Host = ["www.happyfuntimesnacks.com"] }
-
-
 
