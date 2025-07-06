@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import React from 'react';
 import { Menu, X, Coffee, ShoppingCart } from 'lucide-react';
 
@@ -18,20 +19,25 @@ const Header: React.FC = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="#machines" className="text-gray-600 hover:text-blue-700 transition-colors">
+            <Link to="#machines" className="text-gray-600 hover:text-blue-700 transition-colors">
               Machines
+	      </Link>
             </a>
-            <a href="#products" className="text-gray-600 hover:text-blue-700 transition-colors">
+            <Link to="#products" className="text-gray-600 hover:text-blue-700 transition-colors">
               Products
+	      </Link>
             </a>
-            <a href="#features" className="text-gray-600 hover:text-blue-700 transition-colors">
+            <Link to="#features" className="text-gray-600 hover:text-blue-700 transition-colors">
               Features
+	      </Link>
             </a>
-            <a href="#locations" className="text-gray-600 hover:text-blue-700 transition-colors">
+            <Link to="#locations" className="text-gray-600 hover:text-blue-700 transition-colors">
               Locations
+	      </Link>
             </a>
-            <a href="#contact" className="text-gray-600 hover:text-blue-700 transition-colors">
+            <Link to="#contact" className="text-gray-600 hover:text-blue-700 transition-colors">
               Contact
+	      </Link>
             </a>
           </nav>
 
