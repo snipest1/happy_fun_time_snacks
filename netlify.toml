@@ -15,6 +15,20 @@
   targetPort = 5173
   port = 8888
 
+# Redirect http Netlify subdomain to https domain
+[[redirects]]
+  from = "http://happyfuntimesnacks.com/*"
+  to = "https://www.happyfuntimesnacks.com/:splat"
+  status = 301
+  force = true
+
+# Redirect https Netlify subdomain(if necessary) to https domain
+[[redirects]]
+  from = "https://happyfuntimesnacks.com/*"
+  to = "https://www.happyfuntimesnacks.com/:splat"
+  status = 301
+  force = true
+
 # 🔁 Redirect old Netlify subdomain to custom domain
 [[redirects]]
   from = "https://profound-figolla-72e059.netlify.app/*"
