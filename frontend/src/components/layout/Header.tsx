@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import SmoothScrollLink from '../shared/SmoothScrollLink';
 import { Coffee, ShoppingCart, Menu, X } from 'lucide-react';
 
@@ -34,6 +35,9 @@ const Header: React.FC = () => {
             <SmoothScrollLink to="/#contact" className="text-gray-600 hover:text-blue-700 transition-colors">
               Contact
             </SmoothScrollLink>
+            <Link to="/repair" className="text-gray-600 hover:text-blue-700 transition-colors">
+              Repair
+            </Link>
           </nav>
 
           {/* CTA Button */}
@@ -58,41 +62,24 @@ const Header: React.FC = () => {
       {isMenuOpen && (
         <div className="md:hidden bg-white shadow-lg">
           <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
-            <SmoothScrollLink
-              to="/#machines"
-              className="text-gray-600 hover:text-blue-700 transition-colors py-2 border-b border-gray-100"
-              onClick={() => setIsMenuOpen(false)}
-            >
+            <SmoothScrollLink to="/#machines" className="text-gray-600 hover:text-blue-700 transition-colors py-2 border-b border-gray-100" onClick={() => setIsMenuOpen(false)}>
               Machines
             </SmoothScrollLink>
-            <SmoothScrollLink
-              to="/#products"
-              className="text-gray-600 hover:text-blue-700 transition-colors py-2 border-b border-gray-100"
-              onClick={() => setIsMenuOpen(false)}
-            >
+            <SmoothScrollLink to="/#products" className="text-gray-600 hover:text-blue-700 transition-colors py-2 border-b border-gray-100" onClick={() => setIsMenuOpen(false)}>
               Products
             </SmoothScrollLink>
-            <SmoothScrollLink
-              to="/#features"
-              className="text-gray-600 hover:text-blue-700 transition-colors py-2 border-b border-gray-100"
-              onClick={() => setIsMenuOpen(false)}
-            >
+            <SmoothScrollLink to="/#features" className="text-gray-600 hover:text-blue-700 transition-colors py-2 border-b border-gray-100" onClick={() => setIsMenuOpen(false)}>
               Features
             </SmoothScrollLink>
-            <SmoothScrollLink
-              to="/#locations"
-              className="text-gray-600 hover:text-blue-700 transition-colors py-2 border-b border-gray-100"
-              onClick={() => setIsMenuOpen(false)}
-            >
+            <SmoothScrollLink to="/#locations" className="text-gray-600 hover:text-blue-700 transition-colors py-2 border-b border-gray-100" onClick={() => setIsMenuOpen(false)}>
               Locations
             </SmoothScrollLink>
-            <SmoothScrollLink
-              to="/#contact"
-              className="text-gray-600 hover:text-blue-700 transition-colors py-2 border-b border-gray-100"
-              onClick={() => setIsMenuOpen(false)}
-            >
+            <SmoothScrollLink to="/#contact" className="text-gray-600 hover:text-blue-700 transition-colors py-2 border-b border-gray-100" onClick={() => setIsMenuOpen(false)}>
               Contact
             </SmoothScrollLink>
+            <Link to="/repair" className="text-gray-600 hover:text-blue-700 transition-colors py-2 border-b border-gray-100" onClick={() => setIsMenuOpen(false)}>
+              Repair
+            </Link>
             <button className="bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-full flex items-center justify-center space-x-2 transition-all">
               <ShoppingCart className="h-5 w-5" />
               <span>Get a Quote</span>
