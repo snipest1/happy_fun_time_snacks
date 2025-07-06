@@ -1,50 +1,28 @@
-[build]
-  base = "frontend"
-  command = "npm run build"
-  publish = "dist"
-
-[functions]
-  directory = "netlify/functions"
-  node_bundler = "esbuild"
-
-[[plugins]]
-  package = "@netlify/plugin-functions-install-core"
-
-[dev]
-  framework = "vite"
-  targetPort = 5173
-  port = 8888
-
-# Redirect http Netlify subdomain to https domain
-[[redirects]]
-  from = "http://happyfuntimesnacks.com/*"
-  to = "https://www.happyfuntimesnacks.com/:splat"
-  status = 301
-  force = true
-
-# Redirect https Netlify subdomain(if necessary) to https domain
-[[redirects]]
-  from = "https://happyfuntimesnacks.com/*"
-  to = "https://www.happyfuntimesnacks.com/:splat"
-  status = 301
-  force = true
-
-# 🔁 Redirect old Netlify subdomain to custom domain
+# ✅ Redirect from Netlify subdomain
 [[redirects]]
   from = "https://profound-figolla-72e059.netlify.app/*"
   to = "https://www.happyfuntimesnacks.com/:splat"
   status = 301
   force = true
 
-# ✅ Serve sitemap.xml as a static file
+# ✅ Redirect root domain (non-www) to www
+[[redirects]]
+  from = "/*"
+  to = "https://www.happyfuntimesnacks.com/:splat"
+  status = 301
+  force = true
+  conditions = { Host = ["happyfuntimesnacks.com"] }
+
+# ✅ Serve sitemap as static file
 [[redirects]]
   from = "/sitemap.xml"
   to = "/sitemap.xml"
   status = 200
 
-# 🔁 Catch-all fallback for SPA routing
+# ✅ SPA fallback — only for requests to www domain
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+  conditions = { Host = ["www.happyfuntimesnacks.com"] }
 
