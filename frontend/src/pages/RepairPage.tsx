@@ -1,3 +1,4 @@
+
 import React from 'react';
 import RepairRequestSection from '../components/repair/RepairRequestSection';
 
@@ -11,12 +12,8 @@ export default function RepairPage() {
           product jam, or complete machine failure — we’ll connect you with trusted techs to get you back in business.
         </p>
 
-	  {/*     <RepairRequestSection /> */}
-	  <div className="text-center text-sm text-gray-500">
-      Static repair request placeholder. If this loads, the component is broken.
-    </div>
+        <RepairRequestSection />
       </div>
     </main>
   );
 }
-
