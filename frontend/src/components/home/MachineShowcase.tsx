@@ -62,3 +62,4 @@ const machines = [
   },
 ];
 
+export default MachineShowcase;
