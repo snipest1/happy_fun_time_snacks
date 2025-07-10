@@ -14,7 +14,7 @@ const machines = [
     name: 'Futura Snack & Drink Combo',
     description:
       'Professional-grade vending machine combining snacks and drinks in a secure, modern unit. Accepts cash, card, and contactless payments.',
-    image:'https://evending.com/cdn/shop/files/FuturaSnackandDrinkComboVendingMachine.jpg?v=1707333743&width=1080',
+    image:'https://picsum.photos/id/180/800/600',
     features: [
       'Dual Temperature Zones',
       'Cashless & Contactless Payment',
