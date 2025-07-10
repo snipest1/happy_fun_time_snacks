@@ -151,3 +151,4 @@ const MachineShowcase: React.FC = () => {
 };
 
 export default MachineShowcase;
+
