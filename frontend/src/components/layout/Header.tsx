@@ -16,12 +16,9 @@ const Header: React.FC = () => {
     <header className="fixed top-0 left-0 right-0 bg-hfts-navy shadow-lg z-50 border-b-2 border-hfts-teal">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
-          {/* Logo/Brand */}
-          <Link to="/" className="flex items-center space-x-3 group">
-            <div className="relative">
-              <div className="text-2xl font-bold text-hfts-orange font-display">HFTS</div>
-              <div className="absolute bottom-0 left-0 w-full h-0.5 bg-hfts-teal group-hover:w-full transition-all" />
-            </div>
+          {/* Logo/Brand - Home Button */}
+          <Link to="/" className="flex items-center space-x-2 group">
+            <img src="/images/hfts-logo.png" alt="HFTS Logo" className="h-14 w-14 object-contain hover:scale-110 transition-transform" />
             <span className="hidden sm:inline text-white font-bold text-lg">
               Happy Fun Time Snacks
             </span>
