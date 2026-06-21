@@ -20,14 +20,14 @@ const Footer: React.FC = () => {
               <a href="https://www.facebook.com/share/1J3718vYGh/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-hfts-orange transition-colors">
                 <Facebook className="h-5 w-5" />
               </a>
-              <a href="https://www.facebook.com/share/1J3718vYGh/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-hfts-orange transition-colors">
+              <a href="#" className="text-gray-400 hover:text-hfts-orange transition-colors">
                 <Twitter className="h-5 w-5" />
               </a>
-              <a href="https://www.facebook.com/share/1J3718vYGh/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-hfts-orange transition-colors">
-                <a href="https://www.instagram.com/happyfuntimesnacks/?hl=en" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-hfts-orange transition-colors"><Instagram className="h-5 w-5" />
+              <a href="https://www.instagram.com/happyfuntimesnacks/?hl=en" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-hfts-orange transition-colors">
+                <Instagram className="h-5 w-5" />
               </a>
-              <a href="https://www.facebook.com/share/1J3718vYGh/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-hfts-orange transition-colors">
-                <a href="https://www.linkedin.com/company/happy-fun-time-snacks/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-hfts-orange transition-colors"><Linkedin className="h-5 w-5" />
+              <a href="https://www.linkedin.com/company/happy-fun-time-snacks/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-hfts-orange transition-colors">
+                <Linkedin className="h-5 w-5" />
               </a>
             </div>
           </div>
