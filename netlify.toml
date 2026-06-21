@@ -1,51 +1,5 @@
 [build]
   base = "frontend"
-  command = "npm install --legacy-peer-deps && npm run build"
+  command = "npm install --force && npm run build"
   publish = "dist"
   functions = "netlify/functions"
-
-[[plugins]]
-  package = "@netlify/plugin-functions-install-core"
-
-[functions]
-  node_bundler = "esbuild"
-  included_files = ["netlify/functions/package.json"]
-
-[dev]
-  framework = "vite"
-  targetPort = 5173
-  port = 8888
-
-# 🔁 Redirect Netlify subdomain to custom domain
-[[redirects]]
-  from = "https://profound-figolla-72e059.netlify.app/*"
-  to = "https://www.happyfuntimesnacks.com/:splat"
-  status = 301
-  force = true
-
-# 🔁 Redirect root domain (non-www) to www
-[[redirects]]
-  from = "/*"
-  to = "https://www.happyfuntimesnacks.com/:splat"
-  status = 301
-  force = true
-  conditions = { Host = ["happyfuntimesnacks.com"] }
-
-# ✅ Serve sitemap.xml directly
-[[redirects]]
-  from = "/sitemap.xml"
-  to = "/sitemap.xml"
-  status = 200
-
-# 🔁 SPA fallback for frontend routing (only on www)
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  conditions = { Host = ["www.happyfuntimesnacks.com"] }
-
-# 🔁 SPA fallback for any unmatched route (regardless of domain)
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
