@@ -132,7 +132,7 @@ const ContactSection: React.FC = () => {
                                 </div>
                                 <div>
                                     <h4 className="font-bold text-lg mb-1">Our Location</h4>
-                                    <p className="text-gray-300">125 Commons Way, Ste 202-203, Unit #164</p>
+                                    <p className="text-gray-300">3088 Chapel Hill Rd. Douglasville, GA, 30135</p>
                                     <p className="text-gray-300">Villa Rica, GA 30180</p>
                                 </div>
                             </div>
