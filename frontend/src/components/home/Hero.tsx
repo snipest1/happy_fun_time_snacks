@@ -11,21 +11,21 @@ const Hero: React.FC = () => {
       subtitle: "Zero Hassle. Happy People.",
       description: "Modern vending machines with cashless payment, real-time monitoring, and premium refreshments. We handle installation, maintenance, and support.",
       cta: "See Our Services",
-      image: "/images/vending-hero-1.jpg" // Updated path
+      image: "/images/vending-hero-1.png" // Updated path
     },
     {
       title: "Warehouses. Government. Apartments.",
       subtitle: "Built for Serious Operations",
       description: "Serving West Georgia with reliable vending solutions that keep employees, staff, and residents satisfied.",
       cta: "Check Service Areas",
-      image: "/images/vending-hero-2.jpg"
+      image: "/images/vending-hero-2.png"
     },
     {
       title: "Coming Soon: Smart Tracking",
       subtitle: "Real-Time Inventory & Analytics",
       description: "Predictive restocking, telemetry dashboards, and automated alerts. Innovation built in from the start.",
       cta: "Learn More",
-      image: "/images/vending-hero-3.jpg"
+      image: "/images/vending-hero-3.png"
     }
   ];
 
