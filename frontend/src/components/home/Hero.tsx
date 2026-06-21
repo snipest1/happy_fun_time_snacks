@@ -1,41 +1,45 @@
 import React, { useEffect, useState } from 'react';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, Zap } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Hero: React.FC = () => {
   const [activeSlide, setActiveSlide] = useState(0);
   
   const slides = [
     {
-      title: "Smart Vending Solutions",
-      subtitle: "Revolutionize Your Vending Experience",
-      description: "State-of-the-art vending machines with touchless payment, remote monitoring, and premium product selection.",
-      image: "https://picsum.photos/id/1/1200/800"
+      title: "Premium Smart Vending",
+      subtitle: "Zero Hassle. Happy People.",
+      description: "Modern vending machines with cashless payment, real-time monitoring, and premium refreshments. We handle installation, maintenance, and support.",
+      cta: "See Our Services",
+      image: "/vending-hero-1.jpg" // Updated path
     },
     {
-      title: "Cashless Payment",
-      subtitle: "Convenient Transactions",
-      description: "Our machines support credit cards, mobile payments, and digital wallets for a seamless customer experience.",
-      image: "https://picsum.photos/id/20/1200/800"
+      title: "Warehouses. Government. Apartments.",
+      subtitle: "Built for Serious Operations",
+      description: "Serving West Georgia with reliable vending solutions that keep employees, staff, and residents satisfied.",
+      cta: "Check Service Areas",
+      image: "/vending-hero-2.jpg"
     },
     {
-      title: "24/7 Availability",
-      subtitle: "Always There When Needed",
-      description: "Provide your customers or employees with round-the-clock access to refreshments and essentials.",
-      image: "https://picsum.photos/id/165/1200/800"
+      title: "Coming Soon: Smart Tracking",
+      subtitle: "Real-Time Inventory & Analytics",
+      description: "Predictive restocking, telemetry dashboards, and automated alerts. Innovation built in from the start.",
+      cta: "Learn More",
+      image: "/vending-hero-3.jpg"
     }
   ];
 
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % slides.length);
-    }, 5000);
+    }, 6000);
 
     return () => clearInterval(interval);
   }, [slides.length]);
 
   return (
-    <section className="relative h-screen overflow-hidden">
-      {/* Background Slides */}
+    <section className="relative h-screen overflow-hidden bg-hfts-navy">
+      {/* Background Slides with Overlay */}
       {slides.map((slide, index) => (
         <div
           key={index}
@@ -43,11 +47,16 @@ const Hero: React.FC = () => {
             activeSlide === index ? 'opacity-100' : 'opacity-0'
           }`}
         >
-          <div className="absolute inset-0 bg-black/40 z-10" />
+          {/* Gradient overlay instead of just dark */}
+          <div className="absolute inset-0 bg-gradient-to-r from-hfts-navy/80 to-hfts-navy/40 z-10" />
           <img
             src={slide.image}
             alt={slide.title}
             className="absolute inset-0 w-full h-full object-cover"
+            onError={(e) => {
+              // Fallback to gradient if image doesn't load
+              (e.target as HTMLImageElement).style.display = 'none';
+            }}
           />
         </div>
       ))}
@@ -64,23 +73,32 @@ const Hero: React.FC = () => {
                   : 'opacity-0 translate-y-8 absolute'
               }`}
             >
-              <h2 className="text-amber-500 font-semibold text-xl md:text-2xl mb-2">
-                {slide.subtitle}
-              </h2>
-              <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+              <div className="flex items-center gap-2 mb-4">
+                <Zap className="h-5 w-5 text-hfts-orange" />
+                <h2 className="text-hfts-orange font-display font-bold text-lg md:text-xl">
+                  {slide.subtitle}
+                </h2>
+              </div>
+              <h1 className="text-white text-5xl md:text-6xl lg:text-7xl font-display font-bold mb-6 leading-tight">
                 {slide.title}
               </h1>
-              <p className="text-gray-200 text-lg md:text-xl mb-8 max-w-2xl">
+              <p className="text-gray-200 text-lg md:text-xl mb-10 max-w-2xl leading-relaxed">
                 {slide.description}
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="bg-amber-500 hover:bg-amber-600 text-white px-8 py-3 rounded-full font-medium transition-all transform hover:scale-105 shadow-lg flex items-center justify-center">
-                  <span>Explore Machines</span>
+                <Link
+                  to={index === 0 ? '/services' : index === 1 ? '/service-areas' : '/about'}
+                  className="bg-hfts-orange hover:bg-hfts-coral text-white px-8 py-4 rounded-lg font-bold text-lg transition-all transform hover:scale-105 shadow-lg flex items-center justify-center"
+                >
+                  <span>{slide.cta}</span>
                   <ChevronRight className="ml-2 h-5 w-5" />
-                </button>
-                <button className="bg-transparent hover:bg-white/10 text-white border-2 border-white px-8 py-3 rounded-full font-medium transition-all">
-                  Request a Quote
-                </button>
+                </Link>
+                <Link
+                  to="/contact"
+                  className="bg-transparent hover:bg-white/10 text-white border-2 border-hfts-teal px-8 py-4 rounded-lg font-bold text-lg transition-all"
+                >
+                  Get a Quote
+                </Link>
               </div>
             </div>
           ))}
@@ -92,10 +110,13 @@ const Hero: React.FC = () => {
         {slides.map((_, index) => (
           <button
             key={index}
-            className={`w-3 h-3 rounded-full transition-all ${
-              activeSlide === index ? 'bg-amber-500 w-12' : 'bg-white/50'
-            }`}
             onClick={() => setActiveSlide(index)}
+            className={`transition-all ${
+              activeSlide === index 
+                ? 'bg-hfts-teal w-12 h-3 rounded-full' 
+                : 'bg-white/50 w-3 h-3 rounded-full hover:bg-white/70'
+            }`}
+            aria-label={`Go to slide ${index + 1}`}
           />
         ))}
       </div>

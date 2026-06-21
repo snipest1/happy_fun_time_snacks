@@ -82,27 +82,27 @@ const ProductCategories: React.FC = () => {
     : products.filter(product => product.category === activeCategory);
 
   return (
-    <section id="products" className="py-20 bg-white">
+    <section id="products" className="py-20 bg-hfts-cream">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        <div className="text-center mb-16">
+          <h2 className="text-display-lg text-hfts-navy mb-4">
             Product Categories
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-gray-600 max-w-2xl mx-auto text-lg">
             We offer a wide variety of products to suit every taste and need. Our machines can be customized with your preferred product mix.
           </p>
         </div>
 
         {/* Category Tabs */}
-        <div className="flex flex-wrap justify-center gap-2 mb-10">
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
           {categories.map(category => (
             <button
               key={category.id}
               onClick={() => setActiveCategory(category.id)}
-              className={`px-6 py-2 rounded-full transition-all ${
+              className={`px-6 py-3 rounded-lg font-semibold transition-all ${
                 activeCategory === category.id
-                  ? 'bg-blue-800 text-white shadow-md'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  ? 'bg-hfts-orange text-white shadow-lg'
+                  : 'bg-white text-hfts-navy border-2 border-hfts-teal hover:bg-hfts-teal/10'
               }`}
             >
               {category.name}
@@ -115,9 +115,9 @@ const ProductCategories: React.FC = () => {
           {filteredProducts.map(product => (
             <div 
               key={product.id} 
-              className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300"
+              className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-200 hover:border-hfts-teal"
             >
-              <div className="h-48 overflow-hidden">
+              <div className="h-48 overflow-hidden bg-gray-100">
                 <img 
                   src={product.image} 
                   alt={product.name} 
@@ -125,8 +125,8 @@ const ProductCategories: React.FC = () => {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">{product.name}</h3>
-                <p className="text-gray-600 text-sm">{product.description}</p>
+                <h3 className="text-lg font-bold text-hfts-navy mb-2">{product.name}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{product.description}</p>
               </div>
             </div>
           ))}

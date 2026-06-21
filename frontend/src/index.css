@@ -1,3 +1,36 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --color-navy: #0F1419;
+    --color-teal: #1BA087;
+    --color-orange: #FF6B35;
+    --color-coral: #FF3F5D;
+    --color-gold: #FFD700;
+    --color-cream: #F8F7F5;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-hfts-cream text-hfts-navy font-body;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+
+  /* Neon accent lines */
+  .neon-accent {
+    @apply border-b-2 border-hfts-teal;
+  }
+
+  /* Smooth transitions */
+  * {
+    @apply transition-colors duration-300;
+  }
+}

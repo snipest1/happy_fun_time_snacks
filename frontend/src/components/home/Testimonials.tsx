@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Quote, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Quote, ChevronLeft, ChevronRight, Star } from 'lucide-react';
 
 interface Testimonial {
   id: number;
@@ -14,33 +14,33 @@ const testimonials: Testimonial[] = [
   {
     id: 1,
     name: "Sarah Johnson",
-    position: "Office Manager",
-    company: "Tech Innovations Inc.",
-    content: "Installing VendTech machines in our office has been a game changer. Employees love the variety of healthy options, and the cashless payment system makes it incredibly convenient. The customer service has been exceptional as well.",
+    position: "Facilities Manager",
+    company: "Cobb County Warehouse",
+    content: "HFTS installed machines in our warehouse and honestly, the team made it zero hassle. We pay monthly, they handle everything, and employees love the premium selection. Best decision we made.",
     avatar: "https://picsum.photos/id/237/200"
   },
   {
     id: 2,
     name: "Michael Chen",
-    position: "Facilities Director",
-    company: "Central University",
-    content: "We've had VendTech machines across our campus for over 2 years now. Students appreciate the 24/7 access to quality snacks and beverages. The remote monitoring has been particularly valuable, ensuring machines are always stocked and operational.",
+    position: "Property Manager",
+    company: "Paulding Luxury Apartments",
+    content: "Our residents were asking for vending. HFTS showed up, installed it, and handles all the maintenance. Residents are happy, we have zero headaches. That's exactly what we wanted.",
     avatar: "https://picsum.photos/id/1012/200"
   },
   {
     id: 3,
     name: "Emily Rodriguez",
-    position: "HR Director",
-    company: "Healthcare Partners",
-    content: "VendTech understood our specific needs for healthier options in a healthcare setting. Their machines are reliable, energy-efficient, and their team handles everything from installation to maintenance. Highly recommended!",
+    position: "Operations Lead",
+    company: "Douglas County Distribution Center",
+    content: "The cashless payment system is fantastic. Employees don't carry cash, transactions are instant, and the machine selection is way better than what we had before. Highly recommend HFTS.",
     avatar: "https://picsum.photos/id/1027/200"
   },
   {
     id: 4,
     name: "James Wilson",
-    position: "Property Manager",
-    company: "Westside Residences",
-    content: "Our residents have given overwhelmingly positive feedback about the VendTech machines we installed in our common areas. The modern designs fit perfectly with our aesthetic, and the selection of products is excellent.",
+    position: "Auxiliary Director",
+    company: "AUC Campus Partnership",
+    content: "Students appreciate the premium options and cashless system. HFTS integrated smoothly with our operations, and the support has been responsive. Exactly what a modern campus needs.",
     avatar: "https://picsum.photos/id/1001/200"
   }
 ];
@@ -79,14 +79,14 @@ const Testimonials: React.FC = () => {
   }, [isAnimating]);
 
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-gray-50">
+    <section className="py-20 bg-gradient-to-b from-hfts-cream to-white">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            What Our Clients Say
+        <div className="text-center mb-16">
+          <h2 className="text-display-lg text-hfts-navy mb-4">
+            What Our Operators Say
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Hear from businesses and organizations that have transformed their refreshment services with our vending solutions.
+          <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+            Hear from property managers and operators across West Georgia who chose HFTS for premium vending.
           </p>
         </div>
 
@@ -94,11 +94,11 @@ const Testimonials: React.FC = () => {
           <div className="absolute -left-10 top-1/2 -translate-y-1/2 hidden md:block">
             <button
               onClick={prevTestimonial}
-              className="bg-white p-3 rounded-full shadow-md hover:bg-gray-50 transition-colors"
+              className="bg-hfts-navy hover:bg-hfts-navy/80 p-3 rounded-full shadow-lg transition-colors"
               aria-label="Previous testimonial"
               disabled={isAnimating}
             >
-              <ChevronLeft className="h-6 w-6 text-gray-800" />
+              <ChevronLeft className="h-6 w-6 text-hfts-teal" />
             </button>
           </div>
 
@@ -115,29 +115,34 @@ const Testimonials: React.FC = () => {
                   key={testimonial.id} 
                   className="w-full flex-shrink-0 px-4"
                 >
-                  <div className="bg-white rounded-xl shadow-lg p-8 md:p-10">
-                    <div className="flex items-start gap-5">
-                      <div className="flex-shrink-0">
-                        <Quote className="h-10 w-10 text-amber-500" />
+                  <div className="bg-white rounded-lg shadow-lg p-8 md:p-10 border-t-4 border-hfts-teal">
+                    <div className="flex items-start gap-5 mb-6">
+                      <Quote className="h-8 w-8 text-hfts-orange flex-shrink-0" />
+                      <div className="flex space-x-1">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="h-4 w-4 fill-hfts-gold text-hfts-gold" />
+                        ))}
                       </div>
+                    </div>
+                    
+                    <p className="text-gray-700 text-lg leading-relaxed mb-8 italic">
+                      "{testimonial.content}"
+                    </p>
+                    
+                    <div className="flex items-center pt-6 border-t border-gray-200">
+                      <img 
+                        src={testimonial.avatar} 
+                        alt={testimonial.name}
+                        className="w-14 h-14 rounded-full object-cover mr-4 border-2 border-hfts-teal"
+                      />
                       <div>
-                        <p className="text-gray-700 text-lg italic mb-6">
-                          "{testimonial.content}"
+                        <h4 className="font-bold text-hfts-navy text-lg">{testimonial.name}</h4>
+                        <p className="text-gray-600 text-sm">
+                          {testimonial.position}
                         </p>
-                        
-                        <div className="flex items-center">
-                          <img 
-                            src={testimonial.avatar} 
-                            alt={testimonial.name}
-                            className="w-12 h-12 rounded-full object-cover mr-4"
-                          />
-                          <div>
-                            <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>
-                            <p className="text-gray-600 text-sm">
-                              {testimonial.position}, {testimonial.company}
-                            </p>
-                          </div>
-                        </div>
+                        <p className="text-hfts-orange font-semibold text-sm">
+                          {testimonial.company}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -149,11 +154,11 @@ const Testimonials: React.FC = () => {
           <div className="absolute -right-10 top-1/2 -translate-y-1/2 hidden md:block">
             <button
               onClick={nextTestimonial}
-              className="bg-white p-3 rounded-full shadow-md hover:bg-gray-50 transition-colors"
+              className="bg-hfts-navy hover:bg-hfts-navy/80 p-3 rounded-full shadow-lg transition-colors"
               aria-label="Next testimonial"
               disabled={isAnimating}
             >
-              <ChevronRight className="h-6 w-6 text-gray-800" />
+              <ChevronRight className="h-6 w-6 text-hfts-teal" />
             </button>
           </div>
 
@@ -161,29 +166,31 @@ const Testimonials: React.FC = () => {
           <div className="flex justify-center space-x-4 mt-6 md:hidden">
             <button
               onClick={prevTestimonial}
-              className="bg-white p-3 rounded-full shadow-md hover:bg-gray-50 transition-colors"
+              className="bg-hfts-navy p-3 rounded-full shadow-lg transition-colors"
               aria-label="Previous testimonial"
               disabled={isAnimating}
             >
-              <ChevronLeft className="h-5 w-5 text-gray-800" />
+              <ChevronLeft className="h-5 w-5 text-hfts-teal" />
             </button>
             <button
               onClick={nextTestimonial}
-              className="bg-white p-3 rounded-full shadow-md hover:bg-gray-50 transition-colors"
+              className="bg-hfts-navy p-3 rounded-full shadow-lg transition-colors"
               aria-label="Next testimonial"
               disabled={isAnimating}
             >
-              <ChevronRight className="h-5 w-5 text-gray-800" />
+              <ChevronRight className="h-5 w-5 text-hfts-teal" />
             </button>
           </div>
 
           {/* Indicators */}
-          <div className="flex justify-center space-x-2 mt-6">
+          <div className="flex justify-center space-x-2 mt-8">
             {testimonials.map((_, index) => (
               <button
                 key={index}
-                className={`w-3 h-3 rounded-full transition-all ${
-                  currentIndex === index ? 'bg-amber-500 w-6' : 'bg-gray-300'
+                className={`transition-all ${
+                  currentIndex === index 
+                    ? 'bg-hfts-orange w-8 h-3 rounded-full' 
+                    : 'bg-hfts-teal/30 w-3 h-3 rounded-full hover:bg-hfts-teal/50'
                 }`}
                 onClick={() => {
                   if (!isAnimating) {
