@@ -7,6 +7,7 @@ import FeatureHighlights from '../components/home/FeatureHighlights';
 import LocationFinder from '../components/home/LocationFinder';
 import ContactSection from '../components/home/ContactSection';
 import Testimonials from '../components/home/Testimonials';
+import Solutions from '../components/home/Solutions';
 
 export default function HomePage() {
   useScrollToHash();
@@ -20,6 +21,7 @@ export default function HomePage() {
       <FeatureHighlights />
       <LocationFinder />
       <ContactSection />
+      <Solutions />
       <Testimonials />
     </>
   );
