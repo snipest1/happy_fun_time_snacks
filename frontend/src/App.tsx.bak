@@ -9,7 +9,7 @@ import { AdminLogin } from './pages/admin/AdminLogin';
 import { AdminDashboard } from './pages/admin/AdminDashboard';
 import { BlogPostForm } from './pages/admin/BlogPostForm';
 import Header from './components/layout/Header';
-import Footer from './components/layout/Footer';
+import Footer from './components/Footer';
 
 function App() {
   return (
