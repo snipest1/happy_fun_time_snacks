@@ -1,11 +1,10 @@
 import React, { createContext, useState, useEffect, ReactNode } from 'react';
 import { createClient } from '@supabase/supabase-js';
 
-// Temporarily hardcoded for testing
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://asjestslbbzdpwqexewe.supabase.co';
-const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFzamVzdHNsYmJ6ZHB3cWV4ZXdlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc1Mjc5MTgsImV4cCI6MjA2MzEwMzkxOH0.EzKCZKAmeW2VdyCecNio9ZbG2ZIX-S4-0YF9YL_xOW4';
-
-const supabase = createClient(supabaseUrl, supabaseKey);
+const supabase = createClient(
+  import.meta.env.VITE_SUPABASE_URL,
+  import.meta.env.VITE_SUPABASE_ANON_KEY
+);
 
 interface AuthContextType {
   user: any;

@@ -155,6 +155,16 @@ export const BlogPage: React.FC = () => {
             )}
           </>
         )}
+
+        {/* Admin Login Link */}
+        <div className="border-t border-slate-700 mt-16 pt-8 text-center">
+          <Link
+            to="/admin/login"
+            className="text-slate-400 hover:text-teal-400 text-sm transition"
+          >
+            Admin Login
+          </Link>
+        </div>
       </div>
     </div>
   );
