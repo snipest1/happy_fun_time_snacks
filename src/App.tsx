@@ -1,28 +1,65 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './contexts/AuthContext';
+import { ProtectedRoute } from './components/ProtectedRoute';
+import HomePage from './pages/HomePage';
+import { BlogPage } from './pages/BlogPage';
+import { BlogPostPage } from './pages/BlogPostPage';
+import { AdminLogin } from './pages/admin/AdminLogin';
+import { AdminDashboard } from './pages/admin/AdminDashboard';
+import { BlogPostForm } from './pages/admin/BlogPostForm';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
-import Home from './pages/Home';
-import Contact from './pages/Contact';
+
+function PublicLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <>
+      <Header />
+      {children}
+      <Footer />
+    </>
+  );
+}
 
 function App() {
-  React.useEffect(() => {
-    document.title = 'Happy Fun Time Snacks | Premium Smart Vending';
-  }, []);
-
   return (
-    <Router>
-      <div className="min-h-screen bg-white text-gray-900">
-        <Header />
-        <main className="pt-20">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </Router>
+    <BrowserRouter>
+      <AuthProvider>
+        <Routes>
+          {/* Admin Routes */}
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route
+            path="/admin/dashboard"
+            element={
+              <ProtectedRoute>
+                <AdminDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/post/new"
+            element={
+              <ProtectedRoute>
+                <BlogPostForm />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/post/:id/edit"
+            element={
+              <ProtectedRoute>
+                <BlogPostForm />
+              </ProtectedRoute>
+            }
+          />
+
+          {/* Public Routes */}
+          <Route path="/" element={<PublicLayout><HomePage /></PublicLayout>} />
+          <Route path="/blog" element={<PublicLayout><BlogPage /></PublicLayout>} />
+          <Route path="/blog/:slug" element={<PublicLayout><BlogPostPage /></PublicLayout>} />
+        </Routes>
+      </AuthProvider>
+    </BrowserRouter>
   );
 }
 
