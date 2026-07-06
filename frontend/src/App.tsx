@@ -11,12 +11,24 @@ import { BlogPostForm } from './pages/admin/BlogPostForm';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 
+function PublicLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <>
+      <Header />
+      <div className="pt-20">
+        {children}
+      </div>
+      <Footer />
+    </>
+  );
+}
+
 function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
         <Routes>
-          {/* Admin Routes (no Header/Footer) */}
+          {/* Admin Routes */}
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route
             path="/admin/dashboard"
@@ -43,21 +55,10 @@ function App() {
             }
           />
 
-          {/* Public Routes (with Header/Footer) */}
-          <Route
-            path="*"
-            element={
-              <>
-                <Header />
-                <Routes>
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="/blog" element={<BlogPage />} />
-                  <Route path="/blog/:slug" element={<BlogPostPage />} />
-                </Routes>
-                <Footer />
-              </>
-            }
-          />
+          {/* Public Routes */}
+          <Route path="/" element={<PublicLayout><HomePage /></PublicLayout>} />
+          <Route path="/blog" element={<PublicLayout><BlogPage /></PublicLayout>} />
+          <Route path="/blog/:slug" element={<PublicLayout><BlogPostPage /></PublicLayout>} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>
