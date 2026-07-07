@@ -8,6 +8,8 @@ import { BlogPostPage } from './pages/BlogPostPage';
 import { AdminLogin } from './pages/admin/AdminLogin';
 import { AdminDashboard } from './pages/admin/AdminDashboard';
 import { BlogPostForm } from './pages/admin/BlogPostForm';
+import { ForgotPasswordPage } from './pages/admin/ForgotPasswordPage';
+import { ResetPasswordPage } from './pages/admin/ResetPasswordPage';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 
