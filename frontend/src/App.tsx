@@ -10,6 +10,7 @@ import { AdminDashboard } from './pages/admin/AdminDashboard';
 import { BlogPostForm } from './pages/admin/BlogPostForm';
 import { ForgotPasswordPage } from './pages/admin/ForgotPasswordPage';
 import { ResetPasswordPage } from './pages/admin/ResetPasswordPage';
+import { ChangePasswordPage } from './pages/admin/ChangePasswordPage';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 
@@ -32,11 +33,21 @@ function App() {
         <Routes>
           {/* Admin Routes */}
           <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin/forgot-password" element={<ForgotPasswordPage />} />
+          <Route path="/admin/reset-password" element={<ResetPasswordPage />} />
           <Route
             path="/admin/dashboard"
             element={
               <ProtectedRoute>
                 <AdminDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/change-password"
+            element={
+              <ProtectedRoute>
+                <ChangePasswordPage />
               </ProtectedRoute>
             }
           />
