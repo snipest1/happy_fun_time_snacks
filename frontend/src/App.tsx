@@ -44,13 +44,6 @@ function App() {
             }
           />
           <Route
-            path="/admin/change-password"
-            element={
-              <ProtectedRoute>
-                <ChangePasswordPage />
-              </ProtectedRoute>
-            }
-          />
           <Route
             path="/admin/post/new"
             element={
