@@ -1,20 +1,15 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { createClient } from '@supabase/supabase-js';
+import { supabase } from '../../utils/supabaseClient';
 import { validatePassword } from '../../utils/passwordValidation';
 import { useAuth } from '../../contexts/AuthContext';
-
-const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_ANON_KEY
-);
 
 export const ChangePasswordPage: React.FC = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const { user, logout } = useAuth();
+  const { user } = useAuth();
   const navigate = useNavigate();
 
   const validation = validatePassword(password);
@@ -39,7 +34,6 @@ export const ChangePasswordPage: React.FC = () => {
       const { error: updateError } = await supabase.auth.updateUser({ password });
       if (updateError) throw new Error(updateError.message);
 
-      // Update last_password_change timestamp
       const { error: profileError } = await supabase
         .from('users')
         .update({ last_password_change: new Date().toISOString() })
