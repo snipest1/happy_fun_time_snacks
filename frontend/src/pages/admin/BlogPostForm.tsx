@@ -71,10 +71,11 @@ export const BlogPostForm: React.FC = () => {
 
     try {
       if (id) {
+        const { id: _, created_at: __, ...updateData } = form as any;
         const { error } = await supabase
           .from('blog_posts')
           .update({
-            ...form,
+            ...updateData,
             updated_at: new Date().toISOString(),
           })
           .eq('id', parseInt(id));
