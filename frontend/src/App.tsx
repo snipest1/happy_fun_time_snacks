@@ -44,7 +44,6 @@ function App() {
             }
           />
           <Route
-          <Route
             path="/admin/post/new"
             element={
               <ProtectedRoute>
