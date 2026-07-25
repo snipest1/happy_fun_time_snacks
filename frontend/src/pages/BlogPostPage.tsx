@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
 import { supabase } from '../utils/supabaseClient';
 
 interface BlogPost {
@@ -7,6 +8,7 @@ interface BlogPost {
   title: string;
   slug: string;
   content: string;
+  featured_image: string;
   category: string;
   published_at: string;
   author: string;
@@ -50,6 +52,16 @@ export const BlogPostPage: React.FC = () => {
           ← Back to Blog
         </Link>
 
+        {post.featured_image && (
+          <div className="w-full h-96 rounded-lg overflow-hidden mb-8 bg-slate-800">
+            <img 
+              src={post.featured_image} 
+              alt={post.title} 
+              className="w-full h-full object-cover"
+            />
+          </div>
+        )}
+
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">
             <span className="bg-slate-700 text-slate-300 px-3 py-1 rounded text-sm">{post.category}</span>
@@ -61,8 +73,19 @@ export const BlogPostPage: React.FC = () => {
           </div>
         </div>
 
-        <div className="prose prose-invert max-w-none">
-          <div className="text-slate-300 leading-relaxed whitespace-pre-wrap">{post.content}</div>
+        <div className="prose prose-invert max-w-none text-slate-300 leading-relaxed">
+          <ReactMarkdown
+            components={{
+              h1: ({node, ...props}) => <h1 className="text-4xl font-bold mt-8 mb-4" {...props} />,
+              h2: ({node, ...props}) => <h2 className="text-3xl font-bold mt-6 mb-3" {...props} />,
+              h3: ({node, ...props}) => <h3 className="text-2xl font-bold mt-5 mb-2" {...props} />,
+              p: ({node, ...props}) => <p className="mb-4" {...props} />,
+              a: ({node, ...props}) => <a className="text-teal-400 hover:text-teal-300 underline" {...props} />,
+              img: ({node, ...props}) => <img className="rounded-lg my-6 max-w-full" {...props} />,
+            }}
+          >
+            {post.content}
+          </ReactMarkdown>
         </div>
 
         <div className="border-t border-slate-700 mt-12 pt-8">

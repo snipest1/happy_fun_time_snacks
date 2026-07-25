@@ -9,6 +9,7 @@ interface BlogPost {
   excerpt: string;
   category: string;
   featured: boolean;
+  featured_image: string;
   published_at: string;
   created_at: string;
 }
@@ -98,12 +99,21 @@ export const BlogPage: React.FC = () => {
                 <h2 className="text-3xl font-bold text-teal-400 mb-6">Featured</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {featuredPosts.map((post) => (
-                    <Link
-                      key={post.id}
-                      to={`/blog/${post.slug}`}
-                      className="bg-slate-800 hover:bg-slate-700 rounded-lg overflow-hidden border-l-4 border-orange-500 transition group"
-                    >
-                      <div className="p-6">
+  		   <Link
+                     key={post.id}
+                     to={`/blog/${post.slug}`}
+                     className="bg-slate-800 hover:bg-slate-700 rounded-lg overflow-hidden border-l-4 border-orange-500 transition group"
+  >
+    		    {post.featured_image && (
+      		     <div className="w-full h-48 overflow-hidden bg-slate-700">
+        	       <img 
+          		src={post.featured_image} 
+          		alt={post.title} 
+          		className="w-full h-full object-cover group-hover:scale-105 transition"
+        	      />
+      		    </div>
+    		  )}
+    		  <div className="p-6">
                         <div className="flex items-center gap-3 mb-3">
                           <span className="bg-orange-500 text-white px-3 py-1 rounded text-sm font-bold">Featured</span>
                           <span className="bg-slate-700 text-slate-300 px-3 py-1 rounded text-sm">{post.category}</span>

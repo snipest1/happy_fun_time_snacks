@@ -9,6 +9,7 @@ interface BlogPostFormData {
   content: string;
   category: 'R&D' | 'Case Study' | 'Industry Insights';
   featured: boolean;
+  featured_image: string;
 }
 
 export const BlogPostForm: React.FC = () => {
@@ -21,6 +22,7 @@ export const BlogPostForm: React.FC = () => {
     content: '',
     category: 'R&D',
     featured: false,
+    featured_image: '',
   });
   const [loading, setLoading] = useState(!!id);
   const [error, setError] = useState('');
@@ -159,6 +161,17 @@ export const BlogPostForm: React.FC = () => {
               <option value="Case Study">Case Study</option>
               <option value="Industry Insights">Industry Insights</option>
             </select>
+          </div>
+          
+          <div>
+            <label className="block text-slate-300 mb-2 font-bold">Featured Image URL</label>
+            <input
+              type="text"
+              value={form.featured_image}
+              onChange={(e) => setForm({ ...form, featured_image: e.target.value })}
+              className="w-full px-4 py-2 bg-slate-700 text-white rounded border border-slate-600 focus:border-teal-400 outline-none"
+              placeholder="https://example.com/image.jpg"
+            />
           </div>
 
           <div className="flex items-center">
