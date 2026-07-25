@@ -27,6 +27,7 @@ export const BlogPostForm: React.FC = () => {
   const [loading, setLoading] = useState(!!id);
   const [error, setError] = useState('');
   const [saving, setSaving] = useState(false);
+  const [showMarkdownHelp, setShowMarkdownHelp] = useState(false);
 
   useEffect(() => {
     if (id) {
@@ -140,7 +141,33 @@ export const BlogPostForm: React.FC = () => {
           </div>
 
           <div>
-            <label className="block text-slate-300 mb-2 font-bold">Content</label>
+            <div className="flex justify-between items-center mb-2">
+              <label className="block text-slate-300 font-bold">Content (Markdown)</label>
+              <button
+                type="button"
+                onClick={() => setShowMarkdownHelp(!showMarkdownHelp)}
+                className="text-teal-400 hover:text-teal-300 text-sm font-bold"
+              >
+                {showMarkdownHelp ? 'Hide Help' : 'Show Markdown Guide'}
+              </button>
+            </div>
+
+            {showMarkdownHelp && (
+              <div className="bg-slate-700 p-4 rounded mb-4 text-sm text-slate-200 space-y-2">
+                <p className="font-bold text-teal-400">Markdown Formatting Guide:</p>
+                <div className="font-mono space-y-1">
+                  <p># H1 Heading</p>
+                  <p>## H2 Heading</p>
+                  <p>### H3 Heading</p>
+                  <p>**bold text**</p>
+                  <p>*italic text*</p>
+                  <p>***bold italic***</p>
+                  <p>[link text](https://example.com)</p>
+                  <p>![alt text](https://example.com/image.jpg)</p>
+                </div>
+              </div>
+            )}
+
             <textarea
               value={form.content}
               onChange={(e) => setForm({ ...form, content: e.target.value })}
@@ -162,7 +189,7 @@ export const BlogPostForm: React.FC = () => {
               <option value="Industry Insights">Industry Insights</option>
             </select>
           </div>
-          
+
           <div>
             <label className="block text-slate-300 mb-2 font-bold">Featured Image URL</label>
             <input

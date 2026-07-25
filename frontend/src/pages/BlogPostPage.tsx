@@ -82,6 +82,8 @@ export const BlogPostPage: React.FC = () => {
             .markdown-content a { color: #14b8a6; text-decoration: underline; }
             .markdown-content a:hover { color: #0d9488; }
             .markdown-content img { border-radius: 0.5rem; margin: 1.5rem 0; max-width: 100%; }
+            .markdown-content strong { color: #fbbf24; font-weight: bold; }
+            .markdown-content em { color: #f97316; font-style: italic; }
           `}</style>
           <div 
             className="markdown-content text-slate-300 leading-relaxed"
