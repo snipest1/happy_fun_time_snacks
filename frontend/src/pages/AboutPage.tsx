@@ -79,7 +79,7 @@ export default function AboutPage() {
       <section className="bg-hfts-navy text-white py-16">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-display-lg mb-6">Ready to Experience the Difference?</h2>
-          
+          <a
             href="/contact"
             className="inline-block bg-hfts-orange hover:bg-hfts-coral text-white px-8 py-4 rounded-lg font-bold text-lg transition-colors"
           >
