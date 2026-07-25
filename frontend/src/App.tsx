@@ -11,10 +11,10 @@ import { BlogPostForm } from './pages/admin/BlogPostForm';
 import { ForgotPasswordPage } from './pages/admin/ForgotPasswordPage';
 import { ResetPasswordPage } from './pages/admin/ResetPasswordPage';
 import { ChangePasswordPage } from './pages/admin/ChangePasswordPage';
-import { ServicesPage } from './pages/ServicesPage';
-import { AboutPage } from './pages/AboutPage';
-import { ContactPage } from './pages/ContactPage';
-import { ServiceAreasPage } from './pages/ServiceAreasPage';
+import ServicesPage from './pages/ServicesPage';
+import AboutPage from './pages/AboutPage';
+import ContactPage from './pages/ContactPage';
+import ServiceAreasPage from './pages/ServiceAreasPage';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 
