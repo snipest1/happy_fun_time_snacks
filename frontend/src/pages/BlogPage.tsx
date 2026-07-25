@@ -139,7 +139,7 @@ export const BlogPage: React.FC = () => {
                     <Link
                       key={post.id}
                       to={`/blog/${post.slug}`}
-                      className="bg-slate-800 hover:bg-slate-700 rounded-lg p-6 transition group border border-slate-700 hover:border-teal-500"
+                      className="rounded-lg p-6 transition group border-b border-slate-700 hover:border-teal-500"
                     >
                       <div className="flex justify-between items-start">
                         <div className="flex-1">
