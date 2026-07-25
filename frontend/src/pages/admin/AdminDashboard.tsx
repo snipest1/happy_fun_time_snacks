@@ -73,6 +73,7 @@ export const AdminDashboard: React.FC = () => {
   return (
     <div className="min-h-screen bg-slate-900 text-white p-6">
       <div className="max-w-6xl mx-auto">
+<Link to="/blog" className="text-teal-400 hover:text-teal-300 mb-6 inline-block">← Back to Blog</Link>
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-4xl font-bold text-teal-400">Blog Dashboard</h1>
           <div className="space-x-4">
