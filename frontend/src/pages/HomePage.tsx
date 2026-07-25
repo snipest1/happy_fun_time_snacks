@@ -12,9 +12,17 @@ import Solutions from '../components/home/Solutions';
 export default function HomePage() {
   useScrollToHash();
 
-
   return (
     <>
+      {/* SDVOSB Badge */}
+      <div className="bg-blue-50 border-b-2 border-blue-200 py-4">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-sm font-bold text-blue-900">
+            🇺🇸 Proudly Certified Service-Disabled Veteran-Owned Small Business (SDVOSB)
+          </p>
+        </div>
+      </div>
+
       <Hero />
       <MachineShowcase />
       <ProductCategories />
@@ -26,4 +34,3 @@ export default function HomePage() {
     </>
   );
 }
-

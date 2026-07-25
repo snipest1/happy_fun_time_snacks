@@ -4,6 +4,15 @@ import { Heart, Globe, Zap } from 'lucide-react';
 export default function AboutPage() {
   return (
     <div className="w-full">
+      {/* SDVOSB Badge */}
+      <section className="bg-blue-50 border-b-2 border-blue-200 py-4">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-sm font-bold text-blue-900">
+            🇺🇸 Proudly Certified Service-Disabled Veteran-Owned Small Business (SDVOSB)
+          </p>
+        </div>
+      </section>
+
       {/* Hero Section */}
       <section className="bg-gradient-navy-to-teal py-16 md:py-24 text-white">
         <div className="container mx-auto px-4">
@@ -70,7 +79,7 @@ export default function AboutPage() {
       <section className="bg-hfts-navy text-white py-16">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-display-lg mb-6">Ready to Experience the Difference?</h2>
-          <a
+          
             href="/contact"
             className="inline-block bg-hfts-orange hover:bg-hfts-coral text-white px-8 py-4 rounded-lg font-bold text-lg transition-colors"
           >
