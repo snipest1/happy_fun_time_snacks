@@ -116,7 +116,7 @@ export const BlogPage: React.FC = () => {
     		  <div className="p-6">
                         <div className="flex items-center gap-3 mb-3">
                           <span className="bg-orange-500 text-white px-3 py-1 rounded text-sm font-bold">Featured</span>
-                          <span className="bg-slate-700 text-slate-300 px-3 py-1 rounded text-sm">{post.category}</span>
+                          <span className="text-teal-400 font-bold text-xs uppercase">{post.category}</span>
                         </div>
                         <h3 className="text-2xl font-bold group-hover:text-teal-400 transition mb-2">{post.title}</h3>
                         <p className="text-slate-400 mb-4">{post.excerpt}</p>
@@ -144,7 +144,7 @@ export const BlogPage: React.FC = () => {
                       <div className="flex justify-between items-start">
                         <div className="flex-1">
                           <div className="flex items-center gap-3 mb-2">
-                            <span className="bg-slate-700 text-slate-300 px-3 py-1 rounded text-sm">{post.category}</span>
+                            <span className="text-teal-400 font-bold text-xs uppercase">{post.category}</span>
                           </div>
                           <h3 className="text-xl font-bold group-hover:text-teal-400 transition mb-2">{post.title}</h3>
                           <p className="text-slate-400">{post.excerpt}</p>

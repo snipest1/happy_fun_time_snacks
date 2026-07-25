@@ -64,7 +64,7 @@ export const BlogPostPage: React.FC = () => {
 
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">
-            <span className="bg-slate-700 text-slate-300 px-3 py-1 rounded text-sm">{post.category}</span>
+            <span className="text-teal-400 font-bold text-xs uppercase">{post.category}</span>
             <span className="text-slate-500">{new Date(post.published_at).toLocaleDateString()}</span>
           </div>
           <h1 className="text-5xl font-bold mb-4">{post.title}</h1>
