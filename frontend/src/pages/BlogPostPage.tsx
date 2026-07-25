@@ -73,10 +73,21 @@ export const BlogPostPage: React.FC = () => {
           </div>
         </div>
 
-        <div 
-          className="prose prose-invert max-w-none text-slate-300 leading-relaxed"
-          dangerouslySetInnerHTML={{ __html: marked(post.content) }}
-        />
+        <div className="space-y-4">
+          <style>{`
+            .markdown-content h1 { font-size: 2.25rem; font-weight: bold; margin-top: 2rem; margin-bottom: 1rem; }
+            .markdown-content h2 { font-size: 1.875rem; font-weight: bold; margin-top: 1.5rem; margin-bottom: 0.75rem; }
+            .markdown-content h3 { font-size: 1.5rem; font-weight: bold; margin-top: 1.25rem; margin-bottom: 0.5rem; }
+            .markdown-content p { margin-bottom: 1rem; }
+            .markdown-content a { color: #14b8a6; text-decoration: underline; }
+            .markdown-content a:hover { color: #0d9488; }
+            .markdown-content img { border-radius: 0.5rem; margin: 1.5rem 0; max-width: 100%; }
+          `}</style>
+          <div 
+            className="markdown-content text-slate-300 leading-relaxed"
+            dangerouslySetInnerHTML={{ __html: marked(post.content) }}
+          />
+        </div>
 
         <div className="border-t border-slate-700 mt-12 pt-8">
           <Link to="/blog" className="bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-6 rounded inline-block">
