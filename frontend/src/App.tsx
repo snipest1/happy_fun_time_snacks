@@ -11,6 +11,10 @@ import { BlogPostForm } from './pages/admin/BlogPostForm';
 import { ForgotPasswordPage } from './pages/admin/ForgotPasswordPage';
 import { ResetPasswordPage } from './pages/admin/ResetPasswordPage';
 import { ChangePasswordPage } from './pages/admin/ChangePasswordPage';
+import { ServicesPage } from './pages/ServicesPage';
+import { AboutPage } from './pages/AboutPage';
+import { ContactPage } from './pages/ContactPage';
+import { ServiceAreasPage } from './pages/ServiceAreasPage';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 
@@ -59,11 +63,14 @@ function App() {
               </ProtectedRoute>
             }
           />
-
           {/* Public Routes */}
           <Route path="/" element={<PublicLayout><HomePage /></PublicLayout>} />
           <Route path="/blog" element={<PublicLayout><BlogPage /></PublicLayout>} />
           <Route path="/blog/:slug" element={<PublicLayout><BlogPostPage /></PublicLayout>} />
+          <Route path="/services" element={<PublicLayout><ServicesPage /></PublicLayout>} />
+          <Route path="/about" element={<PublicLayout><AboutPage /></PublicLayout>} />
+          <Route path="/contact" element={<PublicLayout><ContactPage /></PublicLayout>} />
+          <Route path="/service-areas" element={<PublicLayout><ServiceAreasPage /></PublicLayout>} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>
