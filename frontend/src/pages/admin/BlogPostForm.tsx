@@ -28,6 +28,8 @@ export const BlogPostForm: React.FC = () => {
   const [error, setError] = useState('');
   const [saving, setSaving] = useState(false);
   const [showMarkdownHelp, setShowMarkdownHelp] = useState(false);
+  const [uploadError, setUploadError] = useState('');
+  const [uploading, setUploading] = useState(false);
 
   useEffect(() => {
     if (id) {
@@ -56,6 +58,44 @@ export const BlogPostForm: React.FC = () => {
       .replace(/[^\w\s-]/g, '')
       .replace(/\s+/g, '-')
       .replace(/-+/g, '-');
+  };
+
+  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setUploadError('');
+    setUploading(true);
+
+    try {
+      // Validate file type
+      if (!file.type.match(/image\/jpeg|image\/jpg/)) {
+        throw new Error('Only JPEG files are allowed');
+      }
+
+      // Validate file size (5MB max)
+      const maxSizeBytes = 5 * 1024 * 1024;
+      if (file.size > maxSizeBytes) {
+        throw new Error('File size must be less than 5MB');
+      }
+
+      // Convert to base64
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const base64String = event.target?.result as string;
+        // Store as data URI (automatically escaped by React/Supabase)
+        setForm({ ...form, featured_image: base64String });
+        setUploadError('');
+      };
+      reader.onerror = () => {
+        throw new Error('Failed to read file');
+      };
+      reader.readAsDataURL(file);
+    } catch (err: any) {
+      setUploadError(err.message || 'Upload failed');
+    } finally {
+      setUploading(false);
+    }
   };
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -191,14 +231,47 @@ export const BlogPostForm: React.FC = () => {
           </div>
 
           <div>
-            <label className="block text-slate-300 mb-2 font-bold">Featured Image URL</label>
-            <input
-              type="text"
-              value={form.featured_image}
-              onChange={(e) => setForm({ ...form, featured_image: e.target.value })}
-              className="w-full px-4 py-2 bg-slate-700 text-white rounded border border-slate-600 focus:border-teal-400 outline-none"
-              placeholder="https://example.com/image.jpg"
-            />
+            <label className="block text-slate-300 mb-2 font-bold">Featured Image</label>
+            <div className="space-y-4">
+              {/* URL Input */}
+              <div>
+                <label className="block text-slate-400 text-sm mb-2">Or paste image URL:</label>
+                <input
+                  type="text"
+                  value={form.featured_image.startsWith('data:') ? '' : form.featured_image}
+                  onChange={(e) => setForm({ ...form, featured_image: e.target.value })}
+                  className="w-full px-4 py-2 bg-slate-700 text-white rounded border border-slate-600 focus:border-teal-400 outline-none text-sm"
+                  placeholder="https://example.com/image.jpg"
+                />
+              </div>
+
+              {/* File Upload */}
+              <div>
+                <label className="block text-slate-400 text-sm mb-2">Or upload JPEG file (max 5MB):</label>
+                <input
+                  type="file"
+                  accept=".jpg,.jpeg,image/jpeg"
+                  onChange={handleFileUpload}
+                  disabled={uploading}
+                  className="w-full px-4 py-2 bg-slate-700 text-white rounded border border-slate-600 focus:border-teal-400 outline-none text-sm disabled:opacity-50"
+                />
+              </div>
+
+              {uploading && <p className="text-teal-400 text-sm">Processing image...</p>}
+              {uploadError && <p className="text-red-400 text-sm">{uploadError}</p>}
+
+              {/* Preview */}
+              {form.featured_image && (
+                <div className="mt-4">
+                  <p className="text-slate-400 text-sm mb-2">Preview:</p>
+                  <img 
+                    src={form.featured_image} 
+                    alt="Featured" 
+                    className="max-h-48 rounded border border-slate-600"
+                  />
+                </div>
+              )}
+            </div>
           </div>
 
           <div className="flex items-center">
