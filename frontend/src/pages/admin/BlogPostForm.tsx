@@ -69,7 +69,7 @@ export const BlogPostForm: React.FC = () => {
 
     try {
       // Validate file type
-      if (!file.type.match(/image\/jpeg|image\/jpg/)) {
+      if (!file.type.match(/image\/jpeg|image\/jpg|image\/png/)) {
         throw new Error('Only JPEG files are allowed');
       }
 
@@ -247,10 +247,10 @@ export const BlogPostForm: React.FC = () => {
 
               {/* File Upload */}
               <div>
-                <label className="block text-slate-400 text-sm mb-2">Or upload JPEG file (max 5MB):</label>
+                <label className="block text-slate-400 text-sm mb-2">Or upload JPEG or PNG file (max 5MB):</label>
                 <input
                   type="file"
-                  accept=".jpg,.jpeg,image/jpeg"
+                  accept=".jpg,.jpeg,.png,image/jpeg,image/png"
                   onChange={handleFileUpload}
                   disabled={uploading}
                   className="w-full px-4 py-2 bg-slate-700 text-white rounded border border-slate-600 focus:border-teal-400 outline-none text-sm disabled:opacity-50"
