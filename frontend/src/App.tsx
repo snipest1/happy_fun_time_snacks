@@ -12,6 +12,7 @@ import { ForgotPasswordPage } from './pages/admin/ForgotPasswordPage';
 import { ResetPasswordPage } from './pages/admin/ResetPasswordPage';
 import { ChangePasswordPage } from './pages/admin/ChangePasswordPage';
 import ServicesPage from './pages/ServicesPage';
+import CraftServicesPage from './pages/CraftServicesPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import ServiceAreasPage from './pages/ServiceAreasPage';
@@ -68,6 +69,7 @@ function App() {
           <Route path="/blog" element={<PublicLayout><BlogPage /></PublicLayout>} />
           <Route path="/blog/:slug" element={<PublicLayout><BlogPostPage /></PublicLayout>} />
           <Route path="/services" element={<PublicLayout><ServicesPage /></PublicLayout>} />
+          <Route path="/craft-services" element={<PublicLayout><CraftServicesPage /></PublicLayout>} />
           <Route path="/about" element={<PublicLayout><AboutPage /></PublicLayout>} />
           <Route path="/contact" element={<PublicLayout><ContactPage /></PublicLayout>} />
           <Route path="/service-areas" element={<PublicLayout><ServiceAreasPage /></PublicLayout>} />
